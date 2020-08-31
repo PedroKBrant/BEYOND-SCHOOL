@@ -1,14 +1,16 @@
 import Vue from 'vue'
 import App from './App.vue'
+import UserList from './UserList.vue'
+import Chat from './Chat.vue'
 import vuetify from './plugins/vuetify'
 import Vuex from 'vuex'
 import VuexPersistence from 'vuex-persist'
-//import VueRouter from 'vue-router'
+import VueRouter from 'vue-router'
 
 Vue.config.productionTip = false
 
 Vue.use(Vuex)
-//Vue.use(VueRouter)
+Vue.use(VueRouter)
 
 const vuexPersist =  new VuexPersistence({
   key: `beyond`,
@@ -21,7 +23,17 @@ const vuexPersist =  new VuexPersistence({
 const users = {
   namespaced: true,
   state: {
-    messages: []
+    users: [
+      {
+        name: 'Almir'
+      },
+      {
+        name: 'Victor'
+      },
+      {
+        name: 'Paulo'
+      }
+    ]
   },
   getters: {
     getMessages: state => {
@@ -79,10 +91,28 @@ const store = new Vuex.Store({
 
 })
 
-//const router = new VueRouter()
+const routes = [
+  {
+    path: '/',
+    component: UserList 
+  },
+  {
+    path: '/chat/:name',
+    component: Chat  
+  }
+
+]
+const router = new VueRouter({
+  routes
+})
+router.beforeEach((to, from, next) => {
+  console.log(to, from, next)
+  if(to.fullPath === '/chat/Almir') next('/')
+  else next()
+})
 
 new Vue({
-  //router,
+  router,
   store,
   vuetify,
   render: h => h(App),
