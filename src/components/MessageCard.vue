@@ -6,7 +6,6 @@
     <v-list-item>
         <v-list-item-avatar color="grey darken-3" align="top" justify="end">
             <v-img class="elevation-6"
-
                 src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light'
             >
             </v-img>
@@ -55,7 +54,7 @@
 
 <script>
 export default {
-    props: [ 'nameProp', 'messageProp', 'idProp', 'iconProp' ]
+    props: [ 'nameProp', 'messageProp', 'idProp' ]
     
 }
 </script>

@@ -15,7 +15,7 @@
       </v-app-bar>
       
       <div class="messages-container">
-        <div v-for="(message, i) in messages" :key="i">
+        <div v-for="(message, i) in getMessages" :key="i">
             <MessageCard :nameProp='name' :messageProp='message' :idProp='i'
             @erase-me="erase(i)" @edit-me="edit(i)"  />
         </div>
@@ -30,7 +30,10 @@
 </template>
 
 <script>
+
+import { mapGetters } from 'vuex'
 import MessageCard from './components/MessageCard.vue'
+
 export default {
   name: "App",
   components: {
@@ -38,22 +41,19 @@ export default {
   },
   data: () => ({
     name: "Victor Aurelio",
-    icon: 'https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light',
-    messages: [
-      { user: "friend", text: "Olá, pode me ajudar?" },
-      { user: "friend", text: "Sei que não falo contigo há bastante tempo mas estou escrevendo bastante aqui para termos um exemplo real de mensagem." }
-    ],
     field: ''
   }),
   methods: {
+
     send () {
       let message = {
         user: 'me',
         text: this.field
       }
-      this.messages.push(message)
+      this.$store.dispatch('chat/sendMessage', message)
       this.field = ''
     },
+
     erase (index) {
       if(this.messages[index].user === 'me'){
         this.messages.splice(index,1)
@@ -72,6 +72,7 @@ export default {
       }
       
     },
+
     edit (index) {//adicionar a key para apagar ume mensagem específica
       if(this.messages[index].user === 'me')
         this.messages[index].text = this.field 
@@ -80,6 +81,9 @@ export default {
         this.field = '' 
 
     }
+  },
+  computed: {
+    ...mapGetters('chat', ['getMessages'])
   }
 };
 
