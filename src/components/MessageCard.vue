@@ -1,15 +1,20 @@
 <template>
-  <v-card v-if="messageProp.user == 'friend'" class= 'mx-auto #4a148c purple darken-4'>
+  <v-card v-if="messageProp.user == 'friend'" class="pa-md-4 mx-lg-auto">
     <v-list-item>
-        <v-list-item-avatar color="grey darken-3" align="top" justify="end">
-            <v-img class="elevation-6"
-                src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light'
-            >
-            </v-img>
-        </v-list-item-avatar>
+      <v-list-item-avatar color="grey darken-3" align="top" justify="end">
+        <v-img
+          class="elevation-6"
+          src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"
+        >
+        </v-img>
+      </v-list-item-avatar>
       <v-list-item-content>
-        <v-list-item-title class="headline">Our Changing Planet</v-list-item-title>
-        <v-list-item-subtitle class="font-weight-bold">{{$route.params.name}}</v-list-item-subtitle>
+        <v-list-item-title class="headline">
+          Our Changing Planet
+          </v-list-item-title>
+        <v-list-item-subtitle class="font-weight-bold">{{
+          $route.params.name
+        }}</v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
 
@@ -19,7 +24,7 @@
     ></v-img>
 
     <v-card-text>
-        {{ messageProp.text}}
+      {{ messageProp.text }}
     </v-card-text>
 
     <v-card-actions>
@@ -33,17 +38,19 @@
     </v-card-actions>
     <v-spacer></v-spacer>
   </v-card>
-
-    <v-card outlined v-else class='#311b92 deep-purple darken-3'>
+  <v-card raised v-else>
     <v-list-item>
-        <v-list-item-avatar color="grey darken-3" align="top" justify="end">
-            <v-img class="elevation-6"
-                src= 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShaggyMullet&accessoriesType=Round&hairColor=Brown&facialHairType=Blank&clotheType=Hoodie&clotheColor=Gray01&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light'
-                >
-            </v-img>
-        </v-list-item-avatar>
+      <v-list-item-avatar color="grey darken-3" align="top" justify="end">
+        <v-img
+          class="elevation-6"
+          src="https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShaggyMullet&accessoriesType=Round&hairColor=Brown&facialHairType=Blank&clotheType=Hoodie&clotheColor=Gray01&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"
+        >
+        </v-img>
+      </v-list-item-avatar>
       <v-list-item-content>
-        <v-list-item-title class="headline">Our Changing Planet</v-list-item-title>
+        <v-list-item-title class="headline">{{
+          $route.params.tittle
+        }}</v-list-item-title>
         <v-list-item-subtitle class="font-weight-bold">Me</v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
@@ -54,7 +61,7 @@
     ></v-img>
 
     <v-card-text>
-        {{ messageProp.text}}
+      {{ messageProp.text }}
     </v-card-text>
 
     <v-card-actions>
@@ -66,16 +73,13 @@
         <v-icon>mdi-pencil-outline</v-icon>
       </v-btn>
     </v-card-actions>
-    <v-spacer></v-spacer>
   </v-card>
-
 </template>
 
 <script>
 export default {
-    props: [ 'nameProp', 'messageProp', 'idProp' ]
-    
-}
+  props: ["messageProp", "idProp"],
+};
 </script>
 
 <!--

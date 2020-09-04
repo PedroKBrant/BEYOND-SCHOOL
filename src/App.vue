@@ -10,7 +10,10 @@
 //import MessageCard from './components/MessageCard.vue'
 
 export default {
-  name: "App"
+  name: "App",
+  created () {
+    console.log(this.$firebase)
+  }
 };
 
 </script>

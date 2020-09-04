@@ -3,7 +3,6 @@
       <v-list>
           <v-list-item v-for="user of users" :key='user.name' @click="openChat(user.name)">
               <v-list-item-title>{{user.name}}</v-list-item-title>
-
           </v-list-item>
       </v-list>
   </v-main>
